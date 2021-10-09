@@ -1,0 +1,99 @@
+@keyframes change-color {
+  0% {
+    background-color: red;
+  }
+  20% {
+    background-color: orange;
+  }
+  40% {
+    background-color: yellow;
+  }
+  60% {
+    background-color: green;
+  }
+  80% {
+    background-color: blue;
+  }
+  100% {
+    background-color: purple;
+  }
+}
+
+.box {
+  opacity: 0.2;
+  border-radius: 15px;
+  width: 80%;
+  height: 80%;
+  background-color: #059862;
+  position: fixed;
+}
+
+.box-animation {
+  animation-name: change-color;
+  animation-duration: 3s;
+  animation-iteration-count: infinite; /*執行次數*/
+  /* animation-delay: 1s;  網頁打開延遲*/
+}
+
+:root {
+  font-size: 20px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 6rem;
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+  position: relative;
+}
+
+h1::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 20px;
+  height: 6rem;
+  background-color: #000;
+  border-radius: 2px;
+  right: -30px;
+  animation: 1.1s cursor steps(2, jump-none) infinite;
+}
+
+h1.ended::after {
+  animation: 1.1s cursor steps(2, jump-none) infinite;
+}
+
+@keyframes cursor {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+h1 span {
+  --delay: 10s;
+
+  display: inline-block;
+  overflow: hidden;
+  width: 0ch;
+  animation: 0.1s text-in ease-in-out forwards;
+  animation-delay: var(--delay);
+}
+
+@keyframes text-in {
+  from {
+    width: 0ch;
+  }
+  to {
+    width: 1ch;
+  }
+}
